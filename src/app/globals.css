@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ここに追記 */
+:root.theme-uraraka {
+  --c1: #ffdf5e; --c2: #bccf30; --c3: #81b727;
+  --c4: #e57da9; --c5: #a1c6ea; --c6: #5baedb;
+}
+:root.theme-harutori {
+  --c1: #f4b3c5; --c2: #df8291; --c3: #a2cde2;
+  --c4: #d7d897; --c5: #b9b78a; --c6: #a4a045;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
