@@ -1,5 +1,12 @@
 import Link from 'next/link';
-
+const menu = [
+  { label: 'Home',       href: '/' },
+  { label: '何が使われているか', href: '/ingredients' },  // ←追加
+  { label: 'どれくらい違う？', href: '/comparison' },
+  { label: 'どこで食える？', href: '/map' },
+  { label: '花見メニュー',    href: '/menu' },
+  { label: '日本酒セレクション', href: '/sake' },
+];
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
     <header className="bg-[var(--c1)] text-white p-4">
