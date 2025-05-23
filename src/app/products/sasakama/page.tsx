@@ -1,36 +1,35 @@
-// app/products/harako/page.tsx
+// src/app/products/sasakama/page.tsx
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'はらこ飯 | 宮城の美味',
+  title: '笹かま | 宮城の美味',
 };
 
-export default function HarakoPage() {
+export default function SasakamaPage() {
   return (
     <main className="py-8">
       {/* Hero Image */}
       <section className="mb-8">
         <img
-          src="/images/harako-hero.jpg"
-          alt="はらこ飯"
+          src="/images/sasakama-hero.jpg"
+          alt="笹かま"
           className="w-full rounded-lg"
         />
       </section>
 
       {/* Description */}
       <section className="mb-8">
-        <h2 className="text-3xl font-semibold mb-4">はらこ飯とは</h2>
+        <h2 className="text-3xl font-semibold mb-4">笹かまとは</h2>
         <p className="leading-relaxed">
-          秋に収穫される鮭の身とイクラをあたたかいご飯の上にのせた郷土料理です。
-          新鮮な鮭のうまみとプチプチ食感のイクラが絶妙にマッチし、
-          一度食べたら忘れられない味わいを楽しめます。
+          笹の葉の形に成型した魚のすり身焼き「笹かま」。ふわふわの食感と
+          ほんのり漂う笹の香りが魅力で、軽いおつまみやお土産として人気です。
         </p>
       </section>
 
       {/* Gallery */}
       <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/harako1.jpg" alt="はらこ飯1" className="rounded-lg" />
-        <img src="/images/harako2.jpg" alt="はらこ飯2" className="rounded-lg" />
+        <img src="/images/sasakama1.jpg" alt="笹かま1" className="rounded-lg" />
+        <img src="/images/sasakama2.jpg" alt="笹かま2" className="rounded-lg" />
       </section>
 
       {/* Call to Action */}

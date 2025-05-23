@@ -1,37 +1,36 @@
-// app/products/harako/page.tsx
-import Head from 'next/head';
+// src/app/products/zunda/page.tsx
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'はらこ飯 | 宮城の美味',
+  title: 'ずんだ餅 | 宮城の美味',
 };
 
-export default function HarakoPage() {
+export default function ZundaPage() {
   return (
     <main className="py-8">
       {/* Hero Image */}
       <section className="mb-8">
         <img
-          src="/images/harako-hero.jpg"
-          alt="はらこ飯"
+          src="/images/zunda-hero.jpg"
+          alt="ずんだ餅"
           className="w-full rounded-lg"
         />
       </section>
 
       {/* Description */}
       <section className="mb-8">
-        <h2 className="text-3xl font-semibold mb-4">はらこ飯とは</h2>
+        <h2 className="text-3xl font-semibold mb-4">ずんだ餅とは</h2>
         <p className="leading-relaxed">
-          秋に収穫される鮭の身とイクラをあたたかいご飯の上にのせた郷土料理です。
-          新鮮な鮭のうまみとプチプチ食感のイクラが絶妙にマッチし、
-          一度食べたら忘れられない味わいを楽しめます。
+          枝豆をすりつぶし、砂糖を加えて作る「ずんだ餡」を
+          もっちりとしたお餅に絡めた宮城の伝統的な和菓子です。
+          甘さと豆の風味が絶妙なバランスで楽しめます。
         </p>
       </section>
 
       {/* Gallery */}
       <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/harako1.jpg" alt="はらこ飯1" className="rounded-lg" />
-        <img src="/images/harako2.jpg" alt="はらこ飯2" className="rounded-lg" />
+        <img src="/images/zunda1.jpg" alt="ずんだ餅1" className="rounded-lg" />
+        <img src="/images/zunda2.jpg" alt="ずんだ餅2" className="rounded-lg" />
       </section>
 
       {/* Call to Action */}

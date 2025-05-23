@@ -2,6 +2,7 @@
 import '../styles/globals.css';
 import type { ReactNode } from 'react';
 import { Layout } from '../components/Layout';
+import { TransitionCanvas } from '../components/TransitionCanvas';
 
 export const metadata = {
   title: '宮城の美味',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Layout>
           {children}
         </Layout>
+        <TransitionCanvas />
       </body>
     </html>
   );

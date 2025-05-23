@@ -27,6 +27,11 @@ export default function HomePage() {
             desc: '鮭とイクラの絶妙なハーモニー',
           },
           {
+            name: '笹かまぼこ',
+            href: '/products/sasakama',
+            desc: 'ふわふわ食感の魚のすり身焼き',
+          },
+          {
             name: 'せり',
             href: '/products/seri',
             desc: '春の香りを感じる爽やかな野菜',

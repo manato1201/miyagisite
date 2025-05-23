@@ -12,7 +12,7 @@ export default function HarakoPage() {
       {/* Hero Image */}
       <section className="mb-8">
         <img
-          src="/images/harako-hero.jpg"
+          src="/images/harako1.jpg"
           alt="はらこ飯"
           className="w-full rounded-lg"
         />
@@ -30,8 +30,8 @@ export default function HarakoPage() {
 
       {/* Gallery */}
       <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/harako1.jpg" alt="はらこ飯1" className="rounded-lg" />
-        <img src="/images/harako2.jpg" alt="はらこ飯2" className="rounded-lg" />
+        <img src="/images/harako2.jpg" alt="はらこ飯1" className="rounded-lg" />
+        <img src="/images/harako3.jpg" alt="はらこ飯2" className="rounded-lg" />
       </section>
 
       {/* Call to Action */}
