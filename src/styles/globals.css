@@ -28,12 +28,18 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  /* 既存のシステム用上書き */
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
 
+  /* theme-harutori だけは別背景に */
+  :root.theme-harutori {
+    --background: var(--c3);   /* 例：はるとり3 の青 */
+    --foreground: var(--c6);   /* 例：はるとり6 の濃緑 */
+  }
+}
 body {
   background: var(--background);
   color: var(--foreground);

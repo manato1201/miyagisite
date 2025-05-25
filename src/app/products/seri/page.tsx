@@ -11,7 +11,7 @@ export default function SeriPage() {
       {/* Hero Image */}
       <section className="mb-8">
         <img
-          src="/images/seri-hero.jpg"
+          src="/images/seri1.jpg"
           alt="せり"
           className="w-full rounded-lg"
         />
@@ -29,8 +29,8 @@ export default function SeriPage() {
 
       {/* Gallery */}
       <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/seri1.jpg" alt="せり料理1" className="rounded-lg" />
-        <img src="/images/seri2.jpg" alt="せり料理2" className="rounded-lg" />
+        <img src="/images/seri2.jpg" alt="せり料理1" className="rounded-lg" />
+        <img src="/images/seri3.jpg" alt="せり料理2" className="rounded-lg" />
       </section>
 
       {/* Call to Action */}

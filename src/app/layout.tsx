@@ -9,14 +9,21 @@ export const metadata = {
   description: 'はらこ飯・せり・ずんだ餅を海外へ',
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body className="theme-harutori">
-        <Layout>
-          {children}
-        </Layout>
-        
+      <body
+   className="
+     theme-harutori 
+     relative 
+    bg-gradient-to-br 
+     from-[var(--c3)]   /* はるとり3 = #a2cde2 */ 
+     to-[var(--c1)]     /* はるとり1 = #f4b3c5 */
+   "
+ >
+        <Layout>{children}</Layout>
+        <TransitionCanvas />
       </body>
     </html>
   );

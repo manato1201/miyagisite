@@ -6,12 +6,12 @@ import Link from 'next/link';
 const INGREDIENTS = [
   {
     name: 'ずんだ餅',
-    img: '/images/zunda.jpg',
+    img: '/images/zunda1.jpg',
     desc: '枝豆をすりつぶした甘さ控えめのペーストを絡めたお餅',
   },
   {
     name: '笹かま',
-    img: '/images/sasakama.jpg',
+    img: '/images/sasakama1.jpg',
     desc: '笹の葉の形に成型したすり身焼き。ふわふわ食感が特徴',
   },
   {
@@ -21,7 +21,7 @@ const INGREDIENTS = [
   },
   {
     name: 'せりを使った料理',
-    img: '/images/seri.jpg',
+    img: '/images/seri1.jpg',
     desc: '春の香りを感じる爽やかな野菜「せり」を活かした一品',
   },
 ];

@@ -1,19 +1,17 @@
-// components/TransitionCanvas.tsx
 'use client';
 import { useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname }        from 'next/navigation';
 import { Application, Sprite, Container } from 'pixi.js';
-import { Loader } from '@pixi/loaders';
+import { Loader }             from '@pixi/loaders';
 
 export function TransitionCanvas() {
   const canvasRef   = useRef<HTMLDivElement | null>(null);
   const appRef      = useRef<Application | null>(null);
   const prevPathRef = useRef<string>('');
+  const resourcesRef= useRef<Record<string, any> | null>(null);
   const pathname    = usePathname();
-  // ロード済みテクスチャを保持
-  const resourcesRef = useRef<Record<string, any> | null>(null);
 
-  // ① Pixi アプリ＆ローダー初期化（マウント時１回だけ）
+  // 1. Pixi アプリと Loader の初期化
   useEffect(() => {
     const app = new Application({
       width: window.innerWidth,
@@ -23,17 +21,14 @@ export function TransitionCanvas() {
     canvasRef.current?.appendChild(app.view);
     appRef.current = app;
 
-    // 自前の Loader インスタンスを生成
     const loader = new Loader();
     loader
       .add('petal', '/sprites/petal.png')
       .add('uguisu', '/sprites/uguisu.png')
       .load((_, resources) => {
-        // 読み込み完了後に resources を保存
         resourcesRef.current = resources;
       });
 
-    // ウィンドウリサイズ対応
     const onResize = () => {
       app.renderer.resize(window.innerWidth, window.innerHeight);
     };
@@ -45,21 +40,20 @@ export function TransitionCanvas() {
     };
   }, []);
 
-  // ② パス変更時にアニメーション発火
+  // 2. ルート変更時のアニメーション
   useEffect(() => {
     const app = appRef.current;
     const resources = resourcesRef.current;
-    if (!app || !resources) return;  // Loader 終了前にはスキップ
+    if (!app || !resources) return;
 
     if (prevPathRef.current && prevPathRef.current !== pathname) {
       const container = new Container();
       app.stage.addChild(container);
 
       for (let i = 0; i < 30; i++) {
-        const tex =
-          Math.random() < 0.5
-            ? resources.petal.texture
-            : resources.uguisu.texture;
+        const tex = Math.random() < 0.5
+          ? resources.petal.texture
+          : resources.uguisu.texture;
 
         const sprite = new Sprite(tex);
         sprite.anchor.set(0.5);
@@ -79,7 +73,6 @@ export function TransitionCanvas() {
 
       setTimeout(() => app.stage.removeChild(container), 1500);
     }
-
     prevPathRef.current = pathname;
   }, [pathname]);
 

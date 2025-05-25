@@ -11,7 +11,7 @@ export default function SasakamaPage() {
       {/* Hero Image */}
       <section className="mb-8">
         <img
-          src="/images/sasakama-hero.jpg"
+          src="/images/sasakama1.jpg"
           alt="笹かま"
           className="w-full rounded-lg"
         />
@@ -28,8 +28,8 @@ export default function SasakamaPage() {
 
       {/* Gallery */}
       <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/sasakama1.jpg" alt="笹かま1" className="rounded-lg" />
-        <img src="/images/sasakama2.jpg" alt="笹かま2" className="rounded-lg" />
+        <img src="/images/sasakama2.jpg" alt="笹かま1" className="rounded-lg" />
+        <img src="/images/sasakama3.jpg" alt="笹かま2" className="rounded-lg" />
       </section>
 
       {/* Call to Action */}

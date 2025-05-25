@@ -11,7 +11,7 @@ export default function ZundaPage() {
       {/* Hero Image */}
       <section className="mb-8">
         <img
-          src="/images/zunda-hero.jpg"
+          src="/images/zunda1.jpg"
           alt="ずんだ餅"
           className="w-full rounded-lg"
         />
@@ -29,8 +29,8 @@ export default function ZundaPage() {
 
       {/* Gallery */}
       <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/zunda1.jpg" alt="ずんだ餅1" className="rounded-lg" />
-        <img src="/images/zunda2.jpg" alt="ずんだ餅2" className="rounded-lg" />
+        <img src="/images/zunda2.jpg" alt="ずんだ餅1" className="rounded-lg" />
+        <img src="/images/zunda3.jpg" alt="ずんだ餅2" className="rounded-lg" />
       </section>
 
       {/* Call to Action */}
