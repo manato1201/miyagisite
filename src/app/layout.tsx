@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
      relative 
     bg-gradient-to-br 
      from-[var(--c3)]   /* はるとり3 = #a2cde2 */ 
+     via-[var(--c3)]
      to-[var(--c1)]     /* はるとり1 = #f4b3c5 */
    "
  >

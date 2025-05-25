@@ -1,7 +1,6 @@
 import Link from 'next/link';
 const menu = [
   { label: 'Home',       href: '/' },
-  { label: '何が使われているか', href: '/ingredients' },  // ←追加
   { label: 'どれくらい違う？', href: '/comparison' },
   { label: '花見メニュー',    href: '/menu' },
 ];

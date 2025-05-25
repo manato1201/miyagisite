@@ -29,10 +29,10 @@
 
 @media (prefers-color-scheme: dark) {
   /* 既存のシステム用上書き */
-  :root {
+  /* :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-  }
+  } */
 
   /* theme-harutori だけは別背景に */
   :root.theme-harutori {

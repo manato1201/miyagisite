@@ -1,59 +1,69 @@
-// app/page.tsx
+// app/ingredients/page.tsx
+import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 
-export default function HomePage() {
+const INGREDIENTS = [
+  {
+    name: 'ずんだ餅',
+    img: '/images/zunda1.jpg',
+    desc: '枝豆をすりつぶした甘さ控えめのペーストを絡めたお餅',
+  },
+  {
+    name: '笹かま',
+    img: '/images/sasakama1.jpg',
+    desc: '笹の葉の形に成型したすり身焼き。ふわふわ食感が特徴',
+  },
+  {
+    name: 'はらこ飯',
+    img: '/images/harako1.jpg',
+    desc: '鮭とイクラの絶妙なハーモニーを楽しむ郷土料理',
+  },
+  {
+    name: 'せり',
+    img: '/images/seri1.jpg',
+    desc: '春の香りを感じる爽やかな野菜',
+  },
+];
+
+export default function IngredientsPage() {
   return (
-    <main className="py-8">
-      {/* Hero Section */}
-      <section className="text-center mb-12 relative">
+    <>
+      <Head>
+        <title><h2 className="text-4xl font-bold mb-4">ようこそ、宮城の美味へ</h2></title>
+      </Head>
+
+      <section className="text-center mb-8">
         <h2 className="text-4xl font-bold mb-4">ようこそ、宮城の美味へ</h2>
         <p className="text-lg mb-6">
           はらこ飯・せり・ずんだ餅の魅力を海外からの皆様へ
         </p>
-        <Link
-          href="/products/harako"
-          className="px-6 py-3 border-2 border-[var(--c2)] rounded hover:bg-[var(--c2)]"
-        >
-          まずは“はらこ飯”を見る
-        </Link>
       </section>
 
-      {/* Features Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          {
-            name: 'はらこ飯',
-            href: '/products/harako',
-            desc: '鮭とイクラの絶妙なハーモニー',
-          },
-          {
-            name: '笹かまぼこ',
-            href: '/products/sasakama',
-            desc: 'ふわふわ食感の魚のすり身焼き',
-          },
-          {
-            name: 'せり',
-            href: '/products/seri',
-            desc: '春の香りを感じる爽やかな野菜',
-          },
-          {
-            name: 'ずんだ餅',
-            href: '/products/zunda',
-            desc: '甘さと食感が楽しい伝統のお菓子',
-          },
-        ].map((item) => (
-          <div key={item.name} className="p-6 border rounded-lg hover:shadow-lg">
-            <h3 className="text-2xl font-semibold mb-2">{item.name}</h3>
-            <p>{item.desc}</p>
-            <Link
-              href={item.href}
-              className="mt-4 inline-block text-[var(--c3)] underline"
-            >
-              詳細へ
-            </Link>
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {INGREDIENTS.map((item) => (
+          <div key={item.name} className="border rounded-lg overflow-hidden hover:shadow-lg">
+            <div className="relative h-40">
+              <Image
+                src={item.img}
+                alt={item.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4">
+              <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
+              <p className="text-sm text-gray-700">{item.desc}</p>
+              <Link
+                href={`/products/${item.name === 'はらこ飯' ? 'harako' : item.name === 'せりを使った料理' ? 'seri' : item.name === 'ずんだ餅' ? 'zunda' : '#'}`}
+                className="mt-3 inline-block text-[var(--c2)] underline"
+              >
+                詳細を見る
+              </Link>
+            </div>
           </div>
         ))}
       </section>
-    </main>
+    </>
   );
 }
