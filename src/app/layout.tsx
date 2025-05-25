@@ -12,11 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className="theme-uraraka">
+      <body className="theme-harutori">
         <Layout>
           {children}
         </Layout>
-        <TransitionCanvas />
+        
       </body>
     </html>
   );

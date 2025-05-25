@@ -1,3 +1,4 @@
+// components/TransitionCanvas.tsx
 'use client';
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
@@ -5,50 +6,60 @@ import { Application, Sprite, Container } from 'pixi.js';
 import { Loader } from '@pixi/loaders';
 
 export function TransitionCanvas() {
-  // ① ref に初期値を必ず渡す
   const canvasRef   = useRef<HTMLDivElement | null>(null);
   const appRef      = useRef<Application | null>(null);
   const prevPathRef = useRef<string>('');
   const pathname    = usePathname();
+  // ロード済みテクスチャを保持
+  const resourcesRef = useRef<Record<string, any> | null>(null);
 
-  // ② Pixi アプリケーション初期化（1回だけ）
+  // ① Pixi アプリ＆ローダー初期化（マウント時１回だけ）
   useEffect(() => {
     const app = new Application({
-      backgroundAlpha: 0,  // ← transparent の代わり
-      resizeTo: window,    // ウィンドウに合わせる
+      width: window.innerWidth,
+      height: window.innerHeight,
+      backgroundAlpha: 0,
     });
     canvasRef.current?.appendChild(app.view);
     appRef.current = app;
 
-    // Loader を @pixi/loaders から使う
-    Loader.shared
+    // 自前の Loader インスタンスを生成
+    const loader = new Loader();
+    loader
       .add('petal', '/sprites/petal.png')
       .add('uguisu', '/sprites/uguisu.png')
-      .load();
+      .load((_, resources) => {
+        // 読み込み完了後に resources を保存
+        resourcesRef.current = resources;
+      });
+
+    // ウィンドウリサイズ対応
+    const onResize = () => {
+      app.renderer.resize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', onResize);
 
     return () => {
-      app.destroy(true, {
-        children: true,
-        texture: true
-        
-      });
+      window.removeEventListener('resize', onResize);
+      app.destroy(true, { children: true, texture: true });
     };
   }, []);
 
-  // ③ パスが変わるたびに花びら／鶯アニメーション
+  // ② パス変更時にアニメーション発火
   useEffect(() => {
     const app = appRef.current;
-    if (!app) return;
+    const resources = resourcesRef.current;
+    if (!app || !resources) return;  // Loader 終了前にはスキップ
 
-    // 初回ロード時はスキップ
     if (prevPathRef.current && prevPathRef.current !== pathname) {
       const container = new Container();
       app.stage.addChild(container);
 
       for (let i = 0; i < 30; i++) {
-        const tex = Math.random() < 0.5
-          ? Loader.shared.resources.petal.texture!
-          : Loader.shared.resources.uguisu.texture!;
+        const tex =
+          Math.random() < 0.5
+            ? resources.petal.texture
+            : resources.uguisu.texture;
 
         const sprite = new Sprite(tex);
         sprite.anchor.set(0.5);
