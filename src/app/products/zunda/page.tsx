@@ -37,7 +37,7 @@ export default function ZundaPage() {
       <section className="text-center">
         <Link
           href="/contact"
-          className="px-8 py-4 border-2 border-[var(--c2)] rounded hover:bg-[var(--c2)]"
+          className="px-8 py-4 border-2 border-[var(--c7)] rounded hover:bg-[var(--c3)]"
         >
           お問い合わせ・ツアー予約はこちら
         </Link>

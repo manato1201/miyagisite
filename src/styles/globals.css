@@ -6,13 +6,13 @@
 @tailwind utilities;
 
 /* ここに追記 */
-:root.theme-uraraka {
+/* :root.theme-uraraka {
   --c1: #ffdf5e; --c2: #bccf30; --c3: #81b727;
   --c4: #e57da9; --c5: #a1c6ea; --c6: #5baedb;
-}
-:root.theme-harutori {
+} */
+body.theme-harutori {
   --c1: #f4b3c5; --c2: #df8291; --c3: #a2cde2;
-  --c4: #d7d897; --c5: #b9b78a; --c6: #a4a045;
+  --c4: #d7d897; --c5: #b9b78a; --c6: #a4a045;--c7:#171717;
 }
 
 :root {
@@ -35,9 +35,9 @@
   } */
 
   /* theme-harutori だけは別背景に */
-  :root.theme-harutori {
-    --background: var(--c3);   /* 例：はるとり3 の青 */
-    --foreground: var(--c6);   /* 例：はるとり6 の濃緑 */
+  body.theme-harutori {
+    --background: var(--c6);   /* 例：はるとり3 の青 */
+    --foreground: var(--c7);   /* 例：はるとり6 の濃緑 */
   }
 }
 body {
