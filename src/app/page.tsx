@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { AnimatedLink } from '../components/AnimatedLink';
 const INGREDIENTS = [
   {
     name: 'ずんだ餅',
@@ -36,7 +36,7 @@ export default function IngredientsPage() {
       <Head>
         <title>ようこそ、宮城の美味</title>
       </Head>
-
+ <div className="animate-slide-in">
       <section className="text-center mb-8">
         <h2 className="text-4xl font-bold mb-4">宮城の魅力を海外からの皆様へ</h2>
         <p className="text-lg mb-6">
@@ -45,14 +45,14 @@ export default function IngredientsPage() {
       </section>
 
        <section className="flex justify-center">
-        <div className="grid grid-cols-2 gap-6 max-w-screen-md w-full">
+        <div className="grid grid-cols-2 gap-20 max-w-screen-md w-full">
           {INGREDIENTS.map((item) => (
-            <Link
+            <AnimatedLink
               key={item.key}
               href={`/products/${item.key}`}
               className="block border rounded-lg overflow-hidden hover:shadow-lg"
             >
-              <div className="relative h-40 bg-gray-100">
+              <div className="relative h-45 bg-gray-120">
                 <Image
                   src={item.img}
                   alt={item.name}
@@ -65,10 +65,11 @@ export default function IngredientsPage() {
                 <p className="text-sm text-gray-700 mb-2">{item.desc}</p>
                 <span className="text-[var(--c7)] underline">詳細へ ▶</span>
               </div>
-            </Link>
+            </AnimatedLink>
           ))}
         </div>
       </section>
+      </div>
     </>
   );
 }

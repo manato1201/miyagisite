@@ -1,8 +1,7 @@
 import Link from 'next/link';
 const menu = [
   { label: 'Home',       href: '/' },
-  { label: 'どれくらい違う？', href: '/comparison' },
-  { label: '花見メニュー',    href: '/menu' },
+  
 ];
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

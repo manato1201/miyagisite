@@ -23,7 +23,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
      to-[var(--c1)]     /* はるとり1 = #f4b3c5 */
    "
  >
-        <Layout>{children}</Layout>
+
+        <div className="animate-slide-in">
+          {children}
+        </div>
         <TransitionCanvas />
       </body>
     </html>

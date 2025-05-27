@@ -1,85 +1,78 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { usePathname }        from 'next/navigation';
-import { Application, Sprite, Container } from 'pixi.js';
-import { Loader }             from '@pixi/loaders';
+import { Application, Sprite, Container, Text, TextStyle } from 'pixi.js';
+import { Loader } from '@pixi/loaders';
+
+let animateTransition: () => Promise<void>;
 
 export function TransitionCanvas() {
-  const canvasRef   = useRef<HTMLDivElement | null>(null);
+  const mountRef    = useRef<HTMLDivElement | null>(null);
   const appRef      = useRef<Application | null>(null);
-  const prevPathRef = useRef<string>('');
   const resourcesRef= useRef<Record<string, any> | null>(null);
-  const pathname    = usePathname();
 
-  // 1. Pixi アプリと Loader の初期化
   useEffect(() => {
     const app = new Application({
-      width: window.innerWidth,
+      width:  window.innerWidth,
       height: window.innerHeight,
       backgroundAlpha: 0,
     });
-    canvasRef.current?.appendChild(app.view);
+    mountRef.current?.appendChild(app.view);
     appRef.current = app;
 
-    const loader = new Loader();
-    loader
-      .add('petal', '/sprites/petal.png')
-      .add('uguisu', '/sprites/uguisu.png')
-      .load((_, resources) => {
-        resourcesRef.current = resources;
-      });
+    // ローディング用スプライトをプリロード
+    new Loader()
+      .add('loading', '/sprites/loading.png') // ローディング用画像
+      .load((_, res) => (resourcesRef.current = res));
 
-    const onResize = () => {
-      app.renderer.resize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener('resize', onResize);
-
-    return () => {
-      window.removeEventListener('resize', onResize);
-      app.destroy(true, { children: true, texture: true });
-    };
+    return () => app.destroy(true, { children: true, texture: true });
   }, []);
 
-  // 2. ルート変更時のアニメーション
-  useEffect(() => {
-    const app = appRef.current;
-    const resources = resourcesRef.current;
-    if (!app || !resources) return;
-
-    if (prevPathRef.current && prevPathRef.current !== pathname) {
+  // アニメーション関数を外部公開
+  animateTransition = () => {
+    return new Promise<void>((resolve) => {
+      const app = appRef.current!;
+      const res = resourcesRef.current!;
       const container = new Container();
       app.stage.addChild(container);
 
-      for (let i = 0; i < 30; i++) {
-        const tex = Math.random() < 0.5
-          ? resources.petal.texture
-          : resources.uguisu.texture;
+      // スプライトとテキストを作る
+      const sprite = new Sprite(res.loading.texture);
+      sprite.anchor.set(0.5);
+      sprite.x = -sprite.width;
+      sprite.y = app.screen.height / 2;
+      container.addChild(sprite);
 
-        const sprite = new Sprite(tex);
-        sprite.anchor.set(0.5);
-        sprite.x = Math.random() * app.screen.width;
-        sprite.y = -50;
-        sprite.scale.set(0.3 + Math.random() * 0.3);
-        container.addChild(sprite);
+      const style = new TextStyle({ fill: '#ffffff', fontSize: 24 });
+      const counter = new Text('0', style);
+      counter.anchor.set(0.5);
+      counter.x = sprite.x;
+      counter.y = sprite.y - sprite.height/2 - 20;
+      container.addChild(counter);
 
-        app.ticker.add(() => {
-          sprite.y += 2 + Math.random() * 3;
-          sprite.rotation += 0.01;
-          if (sprite.y > app.screen.height + 50) {
-            container.removeChild(sprite);
-          }
-        });
-      }
+      const totalFrames = 14;
+      const duration = 2000; // ms
+      const start = performance.now();
 
-      setTimeout(() => app.stage.removeChild(container), 1500);
-    }
-    prevPathRef.current = pathname;
-  }, [pathname]);
+      const ticker = (delta: number) => {
+        const t = Math.min((performance.now() - start) / duration, 1);
+        // スプライトを左→右へ
+        sprite.x = -sprite.width + (app.screen.width + sprite.width) * t;
+        // 数字を進行度で表示
+        counter.x = sprite.x;
+        counter.text = String(Math.floor(t * totalFrames));
 
-  return (
-    <div
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-50"
-    />
-  );
+        if (t >= 1) {
+          app.ticker.remove(ticker);
+          app.stage.removeChild(container);
+          resolve();
+        }
+      };
+
+      app.ticker.add(ticker);
+    });
+  };
+
+  return <div ref={mountRef} className="fixed inset-0 pointer-events-none z-50" />;
 }
+
+export { animateTransition };
