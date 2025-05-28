@@ -61,7 +61,7 @@ export default function SasakamaPage() {
             <h2 className="text-2xl font-bold">Food Description</h2>
             <p className="leading-relaxed">
               Bamboo kamaboko is molded to resemble surimi fish leaves, It is a traditional Miyagi paste that is baked softly.
-               It's easy to use for lunch and snacks. Because it uses protein-rich fish surimi, it is also popular as a healthy snack. 
+               It s easy to use for lunch and snacks. Because it uses protein-rich fish surimi, it is also popular as a healthy snack. 
               It is characterized by a slightly fragrant bamboo flavor and a light texture, and can be enjoyed even when cold.
             </p>
           </motion.div>
