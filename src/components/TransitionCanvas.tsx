@@ -1,15 +1,15 @@
 // components/TransitionCanvas.tsx
 'use client';
 import { useEffect, useRef } from 'react';
-import { Application, Sprite, Container, Text, TextStyle, Graphics } from 'pixi.js';
-import { Loader } from '@pixi/loaders';
+import { Application, Sprite, Container, Text, TextStyle } from 'pixi.js';
+import { Loader, type LoaderResource } from '@pixi/loaders';
 
 let animateTransition: () => Promise<void>;
 
 export function TransitionCanvas() {
   const mountRef     = useRef<HTMLDivElement|null>(null);
   const appRef       = useRef<Application|null>(null);
-  const resourcesRef = useRef<Record<string,any>|null>(null);
+ const resourcesRef = useRef<Record<string, LoaderResource> | null>(null);
 
   useEffect(() => {
     // Pixi アプリ初期化
