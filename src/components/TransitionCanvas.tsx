@@ -1,16 +1,18 @@
+// components/TransitionCanvas.tsx
 'use client';
 import { useEffect, useRef } from 'react';
-import { Application, Sprite, Container, Text, TextStyle } from 'pixi.js';
+import { Application, Sprite, Container, Text, TextStyle, Graphics } from 'pixi.js';
 import { Loader } from '@pixi/loaders';
 
 let animateTransition: () => Promise<void>;
 
 export function TransitionCanvas() {
-  const mountRef    = useRef<HTMLDivElement | null>(null);
-  const appRef      = useRef<Application | null>(null);
-  const resourcesRef= useRef<Record<string, any> | null>(null);
+  const mountRef     = useRef<HTMLDivElement|null>(null);
+  const appRef       = useRef<Application|null>(null);
+  const resourcesRef = useRef<Record<string,any>|null>(null);
 
   useEffect(() => {
+    // Pixi アプリ初期化
     const app = new Application({
       width:  window.innerWidth,
       height: window.innerHeight,
@@ -19,15 +21,26 @@ export function TransitionCanvas() {
     mountRef.current?.appendChild(app.view);
     appRef.current = app;
 
-    // ローディング用スプライトをプリロード
+    // スプライトをプリロード（loading.png を用意）
     new Loader()
-      .add('loading', '/sprites/loading.png') // ローディング用画像
-      .load((_, res) => (resourcesRef.current = res));
+      .add('loading', '/sprites/loading.png')
+      .load((_, res) => {
+        resourcesRef.current = res;
+      });
 
-    return () => app.destroy(true, { children: true, texture: true });
+    // リサイズ対応
+    const onResize = () => {
+      app.renderer.resize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+      app.destroy(true, { children:true, texture:true });
+    };
   }, []);
 
-  // アニメーション関数を外部公開
+  // 外部から呼び出すアニメーション関数
   animateTransition = () => {
     return new Promise<void>((resolve) => {
       const app = appRef.current!;
@@ -35,31 +48,34 @@ export function TransitionCanvas() {
       const container = new Container();
       app.stage.addChild(container);
 
-      // スプライトとテキストを作る
-      const sprite = new Sprite(res.loading.texture);
+      // ローディングスプライト
+      const sprite = new Sprite(res.loading.texture!);
       sprite.anchor.set(0.5);
-      sprite.x = -sprite.width;
-      sprite.y = app.screen.height / 2;
+      sprite.x = app.screen.width  / 2;
+      sprite.y = app.screen.height / 2 - 30;
       container.addChild(sprite);
 
-      const style = new TextStyle({ fill: '#ffffff', fontSize: 24 });
-      const counter = new Text('0', style);
-      counter.anchor.set(0.5);
-      counter.x = sprite.x;
-      counter.y = sprite.y - sprite.height/2 - 20;
-      container.addChild(counter);
+      // 進捗テキスト
+      const style = new TextStyle({
+        fill: '#ffffff',
+        fontSize: 100,
+        fontWeight: 'bold',
+      });
+      const percent = new Text('0%', style);
+      percent.anchor.set(0.5);
+      percent.x = app.screen.width  / 2;
+      percent.y = app.screen.height / 2 - 30;
+      container.addChild(percent);
 
-      const totalFrames = 14;
-      const duration = 2000; // ms
-      const start = performance.now();
+      // カウントアップ（2秒で 0→100）
+      const duration = 2000;
+      const start    = performance.now();
 
-      const ticker = (delta: number) => {
-        const t = Math.min((performance.now() - start) / duration, 1);
-        // スプライトを左→右へ
-        sprite.x = -sprite.width + (app.screen.width + sprite.width) * t;
-        // 数字を進行度で表示
-        counter.x = sprite.x;
-        counter.text = String(Math.floor(t * totalFrames));
+      const ticker = () => {
+        const elapsed = performance.now() - start;
+        const t = Math.min(elapsed / duration, 1);
+        const value = Math.floor(t * 100);
+        percent.text = `${value}%`;
 
         if (t >= 1) {
           app.ticker.remove(ticker);
@@ -72,7 +88,12 @@ export function TransitionCanvas() {
     });
   };
 
-  return <div ref={mountRef} className="fixed inset-0 pointer-events-none z-50" />;
+  return (
+    <div
+      ref={mountRef}
+      className="fixed inset-0 pointer-events-none z-50"
+    />
+  );
 }
 
 export { animateTransition };
