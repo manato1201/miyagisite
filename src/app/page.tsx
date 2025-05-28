@@ -1,5 +1,5 @@
 // app/ingredients/page.tsx
-import Head from 'next/head';
+
 import Image from 'next/image';
 import { AnimatedLink } from '../components/AnimatedLink';
 
