@@ -1,7 +1,6 @@
 // app/layout.tsx
 import '../styles/globals.css';
-import type { ReactNode } from 'react';
-import { Layout } from '../components/Layout';
+
 import { TransitionCanvas } from '../components/TransitionCanvas';
 
 export const metadata = {
