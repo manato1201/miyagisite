@@ -79,7 +79,7 @@ export default function HarakoPage() {
             <h2 className="text-2xl font-bold">榴岡公園（宮城野区）</h2>
             <p className="leading-relaxed">
                Along with Nishi Park, Tsutsujigaoka Park is a popular hanami spot.
-               Lord Tsunamura Date, the fourth lord of the Sendai domain, built “Shakado” to pray for the repose of his mother's soul, and 1,000 weeping cherry trees were planted in the precincts of the temple to provide a place for people to relax.
+               Lord Tsunamura Date, the fourth lord of the Sendai domain, built “Shakado” to pray for the repose of his mother s soul, and 1,000 weeping cherry trees were planted in the precincts of the temple to provide a place for people to relax.
                Later, due to postwar devastation and old age of the trees, the number of cherry trees decreased, but tree-planting activities have been carried out, and today nearly 360 cherry trees can be seen in the area.
             </p>
           </motion.div>
@@ -124,7 +124,7 @@ export default function HarakoPage() {
           >
             <h2 className="text-2xl font-bold">仙台城跡・青葉城址（青葉区）</h2>
             <p className="leading-relaxed">
-              This is the site of Sendai Castle (Aoba Castle) built by Date Masamune, the founder of the Sendai Domain. The statue of Lord Date Masamune mounted on a horse standing on the ruins of the castle's main citadel and the cherry blossoms are popular, but the author recommends the view around the Sendai City Museum, which stands on the ruins of the castle's third citadel.
+              This is the site of Sendai Castle (Aoba Castle) built by Date Masamune, the founder of the Sendai Domain. The statue of Lord Date Masamune mounted on a horse standing on the ruins of the castle s main citadel and the cherry blossoms are popular, but the author recommends the view around the Sendai City Museum, which stands on the ruins of the castle s third citadel.
               The author recommends the view around the Sendai City Museum, which stands on the ruins of San-no-maru, where you can see the moat “Naganuma” and cherry blossoms, the “cherry blossom path” near the Sendai International Center, and the “Waki Yagura” and cherry blossoms, all of which you will want to capture with your camera.
             </p>
           </motion.div>

@@ -36,7 +36,7 @@ export default function IngredientsPage() {
             href="/products/miyagi"
             className="px-8 py-4 bg-[var(--c4)] text-black rounded hover:bg-[var(--c2)]"
           >
-            Click here for Miyagi Prefecture's famous places and flower-viewing spots.
+            Click here for Miyagi Prefecture s famous places and flower-viewing spots.
           </AnimatedLink>
         </section>
 
