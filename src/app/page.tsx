@@ -13,9 +13,7 @@ const INGREDIENTS = [
 export default function IngredientsPage() {
   return (
     <>
-      <Head>
-        <title>ようこそ、宮城の美味</title>
-      </Head>
+      
 
       {/* ラッパーに上下パディングを追加し、背景高さは自動に */}
       <div

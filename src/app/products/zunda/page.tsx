@@ -17,9 +17,7 @@ export default function ZundaPage() {
 
   return (
     <>
-      <Head>
-        <title>ずんだ餅 | 宮城の美味</title>
-      </Head>
+      
 
       <main className="max-w-4xl mx-auto space-y-16 py-12 px-4">
         {/* ヘッダー画像 */}
