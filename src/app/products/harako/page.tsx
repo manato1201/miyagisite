@@ -59,10 +59,16 @@ export default function HarakoPage() {
             viewport={{ once: true }}
             variants={fadeRight}
           >
-            <h2 className="text-2xl font-bold">食べ物の説明</h2>
+            <h2 className="text-2xl font-bold">Food Description</h2>
             <p className="leading-relaxed">
-              はらこ飯は新鮮な鮭とイクラをあたたかいご飯の上にのせた宮城の郷土料理です。
-              秋にしか味わえない、プチプチとした食感と旨味のハーモニーをお楽しみください。
+              Harako-meshi is a typical local dish of Miyagi Prefecture, consisting of fresh salmon fillets and ikura (salmon roe) simmered in broth and served over rice.
+              Harako-meshi is a typical local dish of Miyagi Prefecture. Seasoned with soy sauce and sake, the rice is filled with the aroma of salmon,
+              The salmon roe is also seasoned with soy sauce and sake, which enhances the salmon roe. This dish can only be enjoyed in autumn,
+              This dish, which can only be enjoyed in autumn, is an essential part of local festivals and events.
+               In addition to fresh salmon, mitsuba and chopped nori are often added for color,
+              The dish is visually pleasing as well as aromatically accented. At home, it is easily prepared as takikomi-gohan.
+              It is also easily prepared at home as takikomi-gohan (rice cooked with rice), and restaurants offer a variety of variations such as using salmon marinated in miso or adding cream cheese,
+              In addition, restaurants offer a variety of variations, such as using miso-marinated salmon or adding cream cheese to the rice.
             </p>
           </motion.div>
         </section>
@@ -76,10 +82,11 @@ export default function HarakoPage() {
             viewport={{ once: true }}
             variants={fadeRight}
           >
-            <h2 className="text-2xl font-bold">他と比較したときの違い</h2>
+            <h2 className="text-2xl font-bold">Differences when compared to others</h2>
             <p className="leading-relaxed">
-              はらこ飯は鮭の旨味がしっかりご飯に染み込んでいる点が特徴。
-              ほかの郷土料理と比べても、魚と魚卵を同時に楽しめる贅沢さがあります。
+               Compared to kaisen-don (seafood bowl) and ikura-don (salmon roe bowl) in other prefectures, harako-meshi is characterized by soy sauce-based cooked rice.
+              Since the rice itself is well seasoned, you can enjoy the deep richness of the ingredients and rice as one.
+              In addition, the luxury of being able to taste salmon and salmon roe at the same time is appealing, making this dish richly layered despite its simple preparation.
             </p>
           </motion.div>
           <motion.div
@@ -104,7 +111,7 @@ export default function HarakoPage() {
           href="/contact"
           className="px-8 py-4 border-2 border-[var(--c7)] rounded hover:bg-[var(--c3)]"
         >
-          お問い合わせ・ツアー予約はこちら
+          Click here for inquiries and tour reservations
         </Link>
       </section>
       </main>

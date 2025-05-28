@@ -1,47 +1,120 @@
 // src/app/products/zunda/page.tsx
+'use client';
+import Head from 'next/head';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'ずんだ餅 | 宮城の美味',
-};
-
 export default function ZundaPage() {
+  const fadeLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  };
+  const fadeRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  };
+
   return (
-    <main className="py-8">
-      {/* Hero Image */}
-      <section className="mb-8">
-        <img
-          src="/images/zunda1.jpg"
-          alt="ずんだ餅"
-          className="w-full rounded-lg"
-        />
-      </section>
+    <>
+      <Head>
+        <title>ずんだ餅 | 宮城の美味</title>
+      </Head>
 
-      {/* Description */}
-      <section className="mb-8">
-        <h2 className="text-3xl font-semibold mb-4">ずんだ餅とは</h2>
-        <p className="leading-relaxed">
-          枝豆をすりつぶし、砂糖を加えて作る「ずんだ餡」を
-          もっちりとしたお餅に絡めた宮城の伝統的な和菓子です。
-          甘さと豆の風味が絶妙なバランスで楽しめます。
-        </p>
-      </section>
-
-      {/* Gallery */}
-      <section className="grid grid-cols-2 gap-4 mb-8">
-        <img src="/images/zunda2.jpg" alt="ずんだ餅1" className="rounded-lg" />
-        <img src="/images/zunda3.jpg" alt="ずんだ餅2" className="rounded-lg" />
-      </section>
-
-      {/* Call to Action */}
-      <section className="text-center">
-        <Link
-          href="/contact"
-          className="px-8 py-4 border-2 border-[var(--c7)] rounded hover:bg-[var(--c3)]"
+      <main className="max-w-4xl mx-auto space-y-16 py-12 px-4">
+        {/* ヘッダー画像 */}
+        <motion.div
+          className="relative w-full h-64 bg-gray-200 overflow-hidden rounded-lg"
+          initial="hidden"
+          animate="visible"
+          variants={fadeLeft}
         >
-          お問い合わせ・ツアー予約はこちら
-        </Link>
-      </section>
-    </main>
+          <Image
+            src="/images/zunda1.jpg"
+            alt="ずんだ餅"
+            fill
+            className="object-cover"
+          />
+        </motion.div>
+
+        {/* 食べ物の説明 */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            className="relative w-full h-48 bg-gray-200 overflow-hidden rounded-lg"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeLeft}
+          >
+            <Image
+              src="/images/zunda2.jpg"
+              alt="ずんだ餅の材料"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+          <motion.div
+            className="space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeRight}
+          >
+            <h2 className="text-2xl font-bold">Food Description</h2>
+            <p className="leading-relaxed">
+              Zunda mochi is made by boiling and grinding selected edamame beans, and adding sugar and salt to the sloppy bean paste. 
+              It is a traditional Japanese confectionery from Miyagi entwined with glutinous rice cakes. 
+              The original bright green color and gentle sweetness of the beans It is a feature, and you can enjoy the texture smoothly and the graininess is moderate. 
+              It is also rich in vitamin E and dietary fiber, It is a healthy yet satisfying dish. 
+              It has also gained popularity in cafes and souvenir shops.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* 他と比較したときの違い */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            className="space-y-4 order-2 md:order-1"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeRight}
+          >
+            <h2 className="text-2xl font-bold">Differences when compared to others</h2>
+            <p className="leading-relaxed">
+             While many general mochi sweets use red bean paste, zuda mochi is based on edamame. 
+             The flavor of the beans stands out. 
+             Compared to cream and bean paste, it has a lighter texture and a refreshing aftertaste. 
+             It is not too sweet and is loved by a wide range of ages. 
+             In addition, seasonal pistachio flavors and matcha flavors There are also many variations.
+            </p>
+          </motion.div>
+          <motion.div
+            className="relative w-full h-48 bg-gray-200 overflow-hidden rounded-lg order-1 md:order-2"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeLeft}
+          >
+            <Image
+              src="/images/zunda3.jpg"
+              alt="ずんだ餅比較"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="text-center">
+          <Link
+            href="/contact"
+            className="px-8 py-4 border-2 rounded hover:bg-gray-200"
+          >
+            Click here for inquiries and tour reservations
+          </Link>
+        </section>
+      </main>
+    </>
   );
 }
