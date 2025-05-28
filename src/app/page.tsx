@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { AnimatedLink } from '../components/AnimatedLink';
 
 const INGREDIENTS = [
-  { name: 'ずんだ餅',   key: 'zunda',    img: '/images/zunda1.jpg',   desc: '枝豆をすりつぶした甘さ控えめのペーストを絡めたお餅' },
-  { name: '笹かまぼこ', key: 'sasakama', img: '/images/sasakama1.jpg', desc: '笹の葉の形に成型したすり身焼き。ふわふわ食感が特徴' },
-  { name: 'はらこ飯',   key: 'harako',   img: '/images/harako1.jpg',   desc: '鮭とイクラの絶妙なハーモニーを楽しむ郷土料理' },
-  { name: 'せり',       key: 'seri',     img: '/images/seri1.jpg',     desc: '春の香りを感じる爽やかな野菜' },
+  { name: 'Zunda mochi',   key: 'zunda',    img: '/images/zunda1.jpg',   desc: 'Mochi rice cake with a sweetened paste of mashed edamame beans' },
+  { name: 'Bamboo kamaboko', key: 'sasakama', img: '/images/sasakama1.jpg', desc: 'Surimi baked in the shape of a bamboo grass leaf. Characterized by its fluffy texture.' },
+  { name: 'Harako meshi',   key: 'harako',   img: '/images/harako1.jpg',   desc: 'A local delicacy with the perfect harmony of salmon and salmon roe' },
+  { name: 'Seri',       key: 'seri',     img: '/images/seri1.jpg',     desc: 'Refreshing vegetable with a good balance of textures and spring aroma' },
 ];
 
 export default function IngredientsPage() {
@@ -24,9 +24,9 @@ export default function IngredientsPage() {
         }
       >
         <section className="text-center mb-12 bg-[var(--c5)] text-block py-8 px-4 rounded-lg max-w-md mx-auto">
-          <h2 className="text-4xl font-bold mb-4">宮城の魅力を海外からの皆様へ</h2>
+          <h2 className="text-4xl font-bold mb-4">Bringing the charm of Miyagi to people from overseas</h2>
           <p className="text-lg mb-6">
-            花見にぴったりの食材をチェック！
+            Check out the best foods for Hanami!
           </p>
         </section>
 
@@ -36,7 +36,7 @@ export default function IngredientsPage() {
             href="/products/miyagi"
             className="px-8 py-4 bg-[var(--c4)] text-black rounded hover:bg-[var(--c2)]"
           >
-            宮城県の名所・花見スポットはこちら
+            Click here for Miyagi Prefecture's famous places and flower-viewing spots.
           </AnimatedLink>
         </section>
 
@@ -58,8 +58,8 @@ export default function IngredientsPage() {
                 </div>
                 <div className="p-4 bg-white">
                   <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-                  <p className="text-sm text-gray-700 mb-4">{item.desc}</p>
-                  <span className="text-[var(--c7)] underline">詳細へ ▶</span>
+                  <p className="text-sm text-gray-800 mb-4">{item.desc}</p>
+                  <span className="text-[var(--c7)] underline">Go to details ▶</span>
                 </div>
               </AnimatedLink>
             ))}

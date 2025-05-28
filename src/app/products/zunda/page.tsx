@@ -18,7 +18,13 @@ export default function ZundaPage() {
   return (
     <>
       
-
+<div
+        className={
+          `animate-slide-in
+           bg-[url('/images/bg4.png')] bg-cover bg-center
+           py-16 px-4` // 上下に十分なスペースを確保
+        }
+      >
       <main className="max-w-4xl mx-auto space-y-16 py-12 px-4">
         {/* ヘッダー画像 */}
         <motion.div
@@ -113,6 +119,7 @@ export default function ZundaPage() {
           </Link>
         </section>
       </main>
+      </div>
     </>
   );
 }

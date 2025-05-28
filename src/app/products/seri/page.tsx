@@ -18,7 +18,13 @@ export default function SeriPage() {
   return (
     <>
       
-
+<div
+        className={
+          `animate-slide-in
+           bg-[url('/images/bg3.png')] bg-cover bg-center
+           py-16 px-4` // 上下に十分なスペースを確保
+        }
+      >
       <main className="max-w-4xl mx-auto space-y-16 py-12 px-4">
         {/* ヘッダー画像 */}
         <motion.div
@@ -113,6 +119,7 @@ export default function SeriPage() {
           </Link>
         </section>
       </main>
+      </div>
     </>
   );
 }
